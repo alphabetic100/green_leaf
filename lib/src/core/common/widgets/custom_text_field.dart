@@ -13,22 +13,31 @@ class CustomTextField extends StatelessWidget {
     this.prefix,
     this.obscureText = false,
     this.hintText,
+    this.validator,
+    this.keyboardType,
   });
   final TextEditingController? controller;
   final Function(String value)? onChanged;
   final Function(String value)? onSubmitted;
+  final String? Function(String? value)? validator;
   final String? hintText;
   final Widget? suffixIcon;
   final Widget? prefix;
   final bool obscureText;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      keyboardType: keyboardType,
       onChanged: onChanged,
-      onSubmitted: onSubmitted,
+      onFieldSubmitted: onSubmitted,
       obscureText: obscureText,
-      style: AppTextStyles.smallText.withWeight(FontWeight.w500),
+      validator: validator,
+      controller: controller,
+      style: AppTextStyles.smallText
+          .withWeight(FontWeight.w500)
+          .withColor(AppColors.textPrimary),
       decoration: InputDecoration(
         isDense: true,
         contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 0),

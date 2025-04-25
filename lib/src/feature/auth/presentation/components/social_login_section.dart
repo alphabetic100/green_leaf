@@ -27,7 +27,6 @@ class SocialLoginSection extends StatelessWidget {
         imagePath,
         width: 50,
         height: 50,
-        semanticsLabel: 'My SVG Picture',
       ),
     );
   }

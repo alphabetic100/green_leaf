@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 import 'package:green_leaf/src/core/common/widgets/common_bottom_text.dart';
 import 'package:green_leaf/src/core/common/widgets/custom_button.dart';
 import 'package:green_leaf/src/core/common/widgets/custom_text_field.dart';
@@ -10,12 +9,14 @@ import 'package:green_leaf/src/core/utils/constants/colors/app_colors.dart';
 import 'package:green_leaf/src/core/utils/constants/extension/text_style_extension.dart';
 import 'package:green_leaf/src/core/utils/constants/text_style/text_style.dart';
 import 'package:green_leaf/src/core/utils/sizer/app_sizer.dart';
+import 'package:green_leaf/src/feature/auth/controller/sign_in_controller.dart';
 import 'package:green_leaf/src/feature/auth/presentation/components/social_login_section.dart';
 import 'package:green_leaf/src/feature/auth/presentation/view/sign_up/sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  SignInScreen({super.key});
   static const String routeName = "/sign-in";
+  final SignInController controller = Get.put(SignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
