@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,16 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Checkbox(value: false, onChanged: (value) {}),
+                          Obx(
+                            () => Checkbox(
+                              value: controller.rememberMe.value,
+                              activeColor: AppColors.primary,
+                              onChanged: (value) {
+                                controller.toggleRememberMe();
+                              
+                              },
+                            ),
+                          ),
                           Text(
                             "Remember me",
                             style: AppTextStyles.formLabel
@@ -123,7 +133,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: getHeight(20)),
+                  SizedBox(height: getHeight(34)),
                   SocialLoginSection(),
                   SizedBox(height: AppSizes.height * 0.05),
                   Center(

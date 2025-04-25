@@ -136,7 +136,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: getHeight(20)),
+                  SizedBox(height: getHeight(34)),
                   SocialLoginSection(),
                   SizedBox(height: AppSizes.height * 0.03),
                   Center(

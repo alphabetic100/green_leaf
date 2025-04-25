@@ -19,9 +19,6 @@ dependencies:
   #State management 
   get: ^4.7.2
 
-  #Flutter svg
-  flutter_svg:
-
   #google fonts
   google_fonts: ^6.2.1
 

@@ -12,6 +12,10 @@ class SignInController extends GetxController {
   final TextEditingController password = TextEditingController();
 
   RxBool isLoading = false.obs;
+  RxBool rememberMe = false.obs;
+  void toggleRememberMe() {
+    rememberMe.value =! rememberMe.value;
+  }
 
   Future<void> logIn() async {
     isLoading.value = true;
