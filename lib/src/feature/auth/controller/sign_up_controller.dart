@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_leaf/src/core/repo/firebase_repo.dart';
+import 'package:green_leaf/src/core/service/local_service.dart';
+import 'package:green_leaf/src/core/service/snackbar_service.dart';
+import 'package:green_leaf/src/feature/home/presentation/view/home_screen.dart';
 
 class SignUpController extends GetxController {
   final TextEditingController userName = TextEditingController();
@@ -11,6 +14,7 @@ class SignUpController extends GetxController {
   final TextEditingController password = TextEditingController();
   final TextEditingController confirmPassword = TextEditingController();
 
+  String code = "+880";
   RxBool isLoading = false.obs;
   Future<void> signUp() async {
     if (password.text != confirmPassword.text) {
@@ -20,14 +24,19 @@ class SignUpController extends GetxController {
       isLoading.value = true;
       final response = await FirebaseRepo().signUp(
         name: userName.text.trim(),
-        phone: phone.text.trim(),
+        phone: code.trim() + phone.text.trim(),
         email: email.text.trim(),
         password: password.text.trim(),
       );
       if (response != null) {
-        log("success");
+        await LocalService.saveToken(response.uid, "UID");
+        await Get.offAllNamed(HomeScreen.routeName);
       } else {
-        log(response!.uid);
+        SnackbarService.show(
+          title: "Error",
+          message: "Something went wrong please try again",
+          icon: Icons.error,
+        );
       }
     } catch (error) {
       log(error.toString());

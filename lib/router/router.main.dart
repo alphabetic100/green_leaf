@@ -9,8 +9,18 @@ class AppRoutes {
     GetPage(name: SignUpScreen.routeName, page: () => SignUpScreen()),
     GetPage(
       name: ForgotPasswordScreen.routeName,
-      page: () => const ForgotPasswordScreen(),
+      page: () => ForgotPasswordScreen(),
     ),
-    GetPage(name: HomeScreen.routeName, page: () => const HomeScreen()),
+    GetPage(
+      name: OtpVerificationScreen.routeName,
+      page: () => OtpVerificationScreen(),
+      arguments: "email",
+    ),
+
+    GetPage(
+      name: ResetPasswordScreen.routeName,
+      page: () => ResetPasswordScreen(),
+    ),
+    GetPage(name: HomeScreen.routeName, page: () => HomeScreen()),
   ];
 }

@@ -1,4 +1,3 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ import 'package:green_leaf/src/core/utils/constants/text_style/text_style.dart';
 import 'package:green_leaf/src/core/utils/sizer/app_sizer.dart';
 import 'package:green_leaf/src/core/utils/validators/text_field_validator.dart';
 import 'package:green_leaf/src/feature/auth/controller/sign_up_controller.dart';
+import 'package:green_leaf/src/feature/auth/presentation/components/contry_code_dropdown.dart';
 import 'package:green_leaf/src/feature/auth/presentation/components/social_login_section.dart';
 import 'package:green_leaf/src/feature/auth/presentation/view/sign_in/sign_in_screen.dart';
 
@@ -51,28 +51,17 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(height: getHeight(20)),
 
                   Text("Phone Number", style: AppTextStyles.formLabel),
-
                   CustomTextField(
-                    prefix: SizedBox(
-                      height: 25,
-                      width: getWidth(120),
-                      child: CountryCodePicker(
-                        padding: EdgeInsets.zero,
-
-                        flagWidth: 20,
-                        alignLeft: true,
-
-                        pickerStyle: PickerStyle.bottomSheet,
-                        textStyle: AppTextStyles.smallText.withWeight(
-                          FontWeight.w500,
-                        ), // Smaller font
-                        showDropDownButton:
-                            false, // Optional: Hide dropdown icon
-                      ),
-                    ),
+                    controller: controller.phone,
+                    keyboardType: TextInputType.numberWithOptions(),
                     hintText: "17XXXXXXXX",
                     validator: TextFieldValidator.validatePhone,
-                    controller: controller.phone,
+                    prefix: SizedBox(
+                      height: 20,
+                      child: CountryCodeDropdown(onChanged: (code) {
+                        controller.code = code;
+                      }),
+                    ),
                   ),
                   SizedBox(height: getHeight(20)),
 
@@ -87,8 +76,7 @@ class SignUpScreen extends StatelessWidget {
                   Text("Password", style: AppTextStyles.formLabel),
                   CustomTextField(
                     hintText: "********",
-                    obscureText: true,
-                    suffixIcon: Icon(CupertinoIcons.eye),
+                    isPasswordField: true,
                     validator: TextFieldValidator.passwordValidator,
                     controller: controller.password,
                   ),
@@ -97,8 +85,7 @@ class SignUpScreen extends StatelessWidget {
                   Text("Confirm Password", style: AppTextStyles.formLabel),
                   CustomTextField(
                     hintText: "********",
-                    obscureText: true,
-                    suffixIcon: Icon(CupertinoIcons.eye),
+                    isPasswordField: true,
                     controller: controller.confirmPassword,
                     validator: (value) {
                       if (value == null) {
@@ -122,6 +109,22 @@ class SignUpScreen extends StatelessWidget {
                           controller.signUp();
                         }
                       },
+                      child: Obx(
+                        () =>
+                            controller.isLoading.isTrue
+                                ? SizedBox(
+                                  width: getWidth(45),
+                                  child: CupertinoActivityIndicator(
+                                    color: AppColors.white,
+                                  ),
+                                )
+                                : Text(
+                                  "Sing Up",
+                                  style: AppTextStyles.buttonText.withWeight(
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                      ),
                     ),
                   ),
 

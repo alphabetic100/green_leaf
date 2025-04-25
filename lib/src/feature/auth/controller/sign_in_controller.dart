@@ -1,8 +1,10 @@
 import 'dart:developer';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:green_leaf/src/core/repo/firebase_repo.dart';
+import 'package:green_leaf/src/core/service/local_service.dart';
+import 'package:green_leaf/src/core/service/snackbar_service.dart';
 import 'package:green_leaf/src/feature/home/presentation/view/home_screen.dart';
 
 class SignInController extends GetxController {
@@ -21,8 +23,15 @@ class SignInController extends GetxController {
       );
 
       if (response!.uid.isNotEmpty) {
+        await LocalService.saveToken(response.uid, "UID");
         Get.offAllNamed(HomeScreen.routeName);
-      } else {}
+      } else {
+        SnackbarService.show(
+          title: "Error",
+          message: "Email or Password incorrect",
+          icon: Icons.error,
+        );
+      }
     } catch (error) {
       log(error.toString());
     } finally {

@@ -1,5 +1,7 @@
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:green_leaf/src/feature/auth/presentation/view/forgot_password/forgot_password_screen.dart';
+import 'package:green_leaf/src/feature/auth/presentation/view/forgot_password/otp_verification_screen.dart';
+import 'package:green_leaf/src/feature/auth/presentation/view/forgot_password/reset_password_screen.dart';
 import 'package:green_leaf/src/feature/auth/presentation/view/sign_in/sign_in_screen.dart';
 import 'package:green_leaf/src/feature/auth/presentation/view/sign_up/sign_up_screen.dart';
 import 'package:green_leaf/src/feature/home/presentation/view/home_screen.dart';

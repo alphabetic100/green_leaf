@@ -12,6 +12,7 @@ import 'package:green_leaf/src/core/utils/sizer/app_sizer.dart';
 import 'package:green_leaf/src/core/utils/validators/text_field_validator.dart';
 import 'package:green_leaf/src/feature/auth/controller/sign_in_controller.dart';
 import 'package:green_leaf/src/feature/auth/presentation/components/social_login_section.dart';
+import 'package:green_leaf/src/feature/auth/presentation/view/forgot_password/forgot_password_screen.dart';
 import 'package:green_leaf/src/feature/auth/presentation/view/sign_up/sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -51,8 +52,7 @@ class SignInScreen extends StatelessWidget {
                   Text("Password", style: AppTextStyles.formLabel),
                   CustomTextField(
                     hintText: "********",
-                    obscureText: true,
-                    suffixIcon: Icon(CupertinoIcons.eye),
+                    isPasswordField: true,
                     controller: controller.password,
                     validator: TextFieldValidator.passwordValidator,
                   ),
@@ -74,7 +74,9 @@ class SignInScreen extends StatelessWidget {
                         ],
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(ForgotPasswordScreen.routeName);
+                        },
                         child: Text(
                           "Forgot Password?",
                           style: AppTextStyles.formLabel
@@ -97,7 +99,12 @@ class SignInScreen extends StatelessWidget {
                       child: Obx(
                         () =>
                             controller.isLoading.isTrue
-                                ? CircularProgressIndicator()
+                                ? SizedBox(
+                                  width: getWidth(45),
+                                  child: CupertinoActivityIndicator(
+                                    color: AppColors.white,
+                                  ),
+                                )
                                 : Text(
                                   "Sing In",
                                   style: AppTextStyles.buttonText.withWeight(
