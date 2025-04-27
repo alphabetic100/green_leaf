@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:green_leaf/src/core/common/widgets/common_bottom_text.dart';
 import 'package:green_leaf/src/core/common/widgets/custom_button.dart';
 import 'package:green_leaf/src/core/common/widgets/custom_text_field.dart';

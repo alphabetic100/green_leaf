@@ -29,7 +29,7 @@ class DetailsScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: getHeight(30)),
+                SizedBox(height: getHeight(20)),
                 Row(
                   children: [
                     Text(
@@ -74,10 +74,10 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: getHeight(30)),
+                SizedBox(height: getHeight(20)),
                 DetailsHistorySection(),
 
-                //  / SizedBox(height: getHeight(20)),
+                SizedBox(height: getHeight(10)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -108,11 +108,11 @@ class DetailsScreen extends StatelessWidget {
 
                           SizedBox(
                             height: getHeight(50),
-                            width: AppSizes.width * 0.3,
+                            width: AppSizes.width * 0.25,
                             child: Stack(
                               children: List.generate(4, (index) {
                                 return Positioned(
-                                  left: 0 + (24 * index.toDouble()),
+                                  left: 0 + (20 * index.toDouble()),
                                   child: Container(
                                     padding: const EdgeInsets.all(2.0),
                                     decoration: BoxDecoration(
@@ -120,6 +120,7 @@ class DetailsScreen extends StatelessWidget {
                                       shape: BoxShape.circle,
                                     ),
                                     child: CircleAvatar(
+                                      radius: getWidth(15),
                                       backgroundColor:
                                           index == 3
                                               ? Color(0xFFD9D9D9)
@@ -169,7 +170,7 @@ class DetailsScreen extends StatelessWidget {
                             "5",
                             style: AppTextStyles.heading
                                 .withColor(Colors.white)
-                                .copyWith(fontSize: getWidth(55)),
+                                .copyWith(fontSize: getWidth(45)),
                           ),
                           Container(
                             padding: EdgeInsets.symmetric(
@@ -185,6 +186,7 @@ class DetailsScreen extends StatelessWidget {
                               style: AppTextStyles.smallText.copyWith(
                                 fontSize: getWidth(12),
                                 color: AppColors.primary,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               textAlign: TextAlign.center,
                             ),

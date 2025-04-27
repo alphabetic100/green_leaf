@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Green Leaf</string>
+
+    <!-- Facebook SDK Strings -->
+    <string name="facebook_app_id">2868480953341364</string>
+    <string name="facebook_client_token">bac5d2aec863ee3951dccb7e2c4f91a7</string>
+    <string name="fb_login_protocol_scheme">fb2868480953341364</string>
+</resources>
+    

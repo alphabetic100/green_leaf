@@ -14,7 +14,7 @@ class SignInController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool rememberMe = false.obs;
   void toggleRememberMe() {
-    rememberMe.value =! rememberMe.value;
+    rememberMe.value = !rememberMe.value;
   }
 
   Future<void> logIn() async {
@@ -37,6 +37,11 @@ class SignInController extends GetxController {
         );
       }
     } catch (error) {
+      SnackbarService.show(
+        title: "Error",
+        message: "Email or Password incorrect",
+        icon: Icons.error,
+      );
       log(error.toString());
     } finally {
       isLoading.value = false;

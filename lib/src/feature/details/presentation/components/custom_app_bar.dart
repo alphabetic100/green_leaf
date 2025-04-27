@@ -15,7 +15,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: getWidth(16)),
+        padding: EdgeInsets.symmetric(
+          horizontal: getWidth(16),
+          vertical: getHeight(10),
+        ),
         child: Row(
           children: [
             GestureDetector(

@@ -78,11 +78,11 @@ class MyPlacesCard extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: getHeight(50),
-                      width: AppSizes.width * 0.3,
+                      width: AppSizes.width * 0.25,
                       child: Stack(
                         children: List.generate(4, (index) {
                           return Positioned(
-                            left: 0 + (24 * index.toDouble()),
+                            left: 0 + (18 * index.toDouble()),
                             child: Container(
                               padding: const EdgeInsets.all(2.0),
                               decoration: BoxDecoration(
@@ -90,6 +90,7 @@ class MyPlacesCard extends StatelessWidget {
                                 shape: BoxShape.circle,
                               ),
                               child: CircleAvatar(
+                                radius: getWidth(15),
                                 backgroundColor:
                                     index == 3
                                         ? Color(0xFFD9D9D9)

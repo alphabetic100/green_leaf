@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:get/route_manager.dart';
 import 'package:green_leaf/src/core/repo/firebase_repo.dart';
+import 'package:green_leaf/src/core/service/social_login_service.dart';
 import 'package:green_leaf/src/feature/auth/presentation/view/sign_in/sign_in_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,6 +35,8 @@ class LocalService {
       await _preferences.clear();
       _token = null;
       await FirebaseRepo().signOut();
+      await GoogleSignInService().signOutFromGoogle();
+      //   await FacebookLoginService().logout();
       await goToLogin();
     } catch (e) {
       log('Error during logout: $e');
