@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/utils.dart';
+import 'package:green_leaf/src/core/service/local_service.dart';
 import 'package:green_leaf/src/core/utils/constants/colors/app_colors.dart';
 import 'package:green_leaf/src/core/utils/constants/extension/text_style_extension.dart';
 import 'package:green_leaf/src/core/utils/constants/text_style/text_style.dart';
@@ -18,9 +19,9 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Colors.white, Colors.white],
+            begin: Alignment.bottomCenter,
+            end: Alignment.centerRight,
+            colors: [AppColors.primary.withAlpha(10), Colors.white],
           ),
         ),
         child: Column(
@@ -61,6 +62,14 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFF47BA80),
+        onPressed: () {
+          LocalService.logoutUser();
+        },
+        child: Icon(Icons.add, color: Colors.white),
       ),
     );
   }

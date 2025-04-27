@@ -74,15 +74,15 @@ class MyPlacesCard extends StatelessWidget {
                 ),
 
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     SizedBox(
                       height: getHeight(50),
-                      width: AppSizes.width * 0.25,
+                      width: AppSizes.width * 0.3,
                       child: Stack(
                         children: List.generate(4, (index) {
                           return Positioned(
-                            left: 0 + (20 * index.toDouble()),
+                            left: 0 + (24 * index.toDouble()),
                             child: Container(
                               padding: const EdgeInsets.all(2.0),
                               decoration: BoxDecoration(
@@ -94,7 +94,13 @@ class MyPlacesCard extends StatelessWidget {
                                     index == 3
                                         ? Color(0xFFD9D9D9)
                                         : Colors.green.shade100,
-                                child: Text(index == 3 ? "+$members" : "A"),
+                                child:
+                                    index == 3
+                                        ? Text("+5")
+                                        : Icon(
+                                          Icons.person,
+                                          color: AppColors.white,
+                                        ),
                               ),
                             ),
                           );
